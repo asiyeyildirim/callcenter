@@ -1,0 +1,40 @@
+<ion-view view-title="callcenter">
+  <ion-content>
+<!--Arama butonu-->
+  	<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Bir şeyler yaz..." ng-model="kelime">
+
+  </label>
+
+</div>
+   <div class="card" ng-if="kelime && sonuc.length>0">
+  <div class="item item-text-wrap">
+    <b>"{{kelime}}"</b> kelimesine ait {{sonuc.length}} sonuç bulundu <!--Arama sonucundan ne kadar bilgi var onun sayısı-->
+  </div>
+</div>
+
+<div class="card animate__animated animate__jello" ng-if="kelime && sonuc.length==0">
+  <div class="item item-text-wrap item-dark">
+    <b>"{{kelime}}"</b> kelimesine ait sonuç yok... <!--Arama sonucundan ne kadar bilgi var onun sayısı-->
+  </div>
+</div>
+
+
+
+<div class="list">
+
+    <a class="item item-avatar" ng-repeat="firma in firmalar | filter:kelime as sonuc" href="#/app/playlists/{{firma.id}}">
+      <img src={{firma.logo}}>
+      <h2> {{firma.adi}}</h2>
+      <p>{{firma.kategori}}</p>
+    </a>
+
+    ...
+
+</div>
+
+
+  </ion-content>
+</ion-view>
